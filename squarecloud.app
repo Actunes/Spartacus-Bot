@@ -1,0 +1,5 @@
+DISPLAY_NAME=Spartacus Bot
+DESCRIPTION=None
+MAIN=index.js
+MEMORY=256
+VERSION=recommended
