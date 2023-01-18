@@ -8,13 +8,14 @@ const client = new Discord.Client({
     Discord.GatewayIntentBits.GuildVoiceStates
   ]
 })
+const chalk = require('chalk')
 require("dotenv").config()
 
 // MongoDB
 const mongoose = require("mongoose")
 mongoose.set("strictQuery", true)
 mongoose.connect(process.env.MONGO)
-  .then(() => console.log("MongoDB conectado!"))
+  .then(() => console.log(chalk.cyan("MongoDB conectado!")))
 
 //
 module.exports = client
@@ -36,7 +37,7 @@ client.on('interactionCreate', (interaction) => {
 
 //Log bot online
 client.on("ready", () => {
-  console.log(`Bot online em ${client.user.username}!`)
+  console.log(chalk.cyan(`Bot online em ` + chalk.red(`${client.user.username}!`)))
 })
 
 //
