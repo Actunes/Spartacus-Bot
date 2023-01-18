@@ -51,15 +51,15 @@ client.login(process.env.TOKEN)
 
 //Doesn't shut down
 
-process.on('multipleResolves',(type, promise, reason) =>{
-  console.log('Error '+ type, promise, reason )
+process.on('multipleResolves', (type, promise, reason) => {
+  console.log('Error ' + type, promise, reason)
 })
-process.on('unhandRejection',(promise, reason) =>{
-  console.log('Error '+ reason, promise)
+process.on('unhandRejection', (promise, reason) => {
+  console.log('Error ' + reason, promise)
 })
-process.on('uncaughtException',(error, origin) =>{
-  console.log('Error '+ error, origin )
+process.on('uncaughtException', (error, origin) => {
+  console.log('Error ' + error, origin)
 })
-process.on('uncaughtExceptionMonitor',(error, origin) =>{
-  console.log('Error ' + error, origin )
+process.on('uncaughtExceptionMonitor', (error, origin) => {
+  console.log('Error ' + error, origin)
 })

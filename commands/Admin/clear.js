@@ -26,10 +26,10 @@ module.exports = {
                 interaction.reply({ embeds: [embed], ephemeral: true })
             } else {
                 if (parseInt(number) < 1) {
-                   await interaction.reply({ content: '```Enter a number greater than 1 🛠```', ephemeral: true })
+                    await interaction.reply({ content: '```Enter a number greater than 1 🛠```', ephemeral: true })
                 }
                 else {
-                   await interaction.reply({ content: '```Enter a number below or equal than 100 🛠```', ephemeral: true })
+                    await interaction.reply({ content: '```Enter a number below or equal than 100 🛠```', ephemeral: true })
                 }
             }
         }
