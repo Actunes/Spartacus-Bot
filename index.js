@@ -9,6 +9,8 @@ const client = new Discord.Client({
   ]
 })
 const chalk = require('chalk')
+const { loadEvents } = require("./handler/events")
+loadEvents(client)
 require("dotenv").config()
 
 // MongoDB
