@@ -1,7 +1,7 @@
 const client = require("..")
 
 client.on("messageCreate", (message) => {
-    if (message.channel.id === "1058745163784142910", "1062861256685531146") {
+    if (message.channel.id === "1058745163784142910") {
 
         let emoji_accept = "✅"
         let emoji_rejected = "❌"
