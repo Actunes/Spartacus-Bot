@@ -15,7 +15,7 @@ require("dotenv").config()
 const mongoose = require("mongoose")
 mongoose.set("strictQuery", true)
 mongoose.connect(process.env.MONGO)
-  .then(() => console.log(chalk.cyan("MongoDB conectado!")))
+  .then(() => console.log(chalk.magentaBright(`[MongoDB] | Banco de dados conectado!`)))
 
 //
 module.exports = client
@@ -37,7 +37,7 @@ client.on('interactionCreate', (interaction) => {
 
 //Log bot online
 client.on("ready", () => {
-  console.log(chalk.cyan(`Bot online em ` + chalk.red(`${client.user.username}!`)))
+  console.log(chalk.cyan(`[Bot] | online em ` + chalk.red(`${client.user.username}!`)))
 })
 
 //
@@ -52,15 +52,12 @@ client.login(process.env.TOKEN)
 
 //Doesn't shut down
 
-process.on('multipleResolves', (type, promise, reason) => {
-  console.log('Error ' + type, promise, reason)
-})
-process.on('unhandRejection', (promise, reason) => {
-  console.log('Error ' + reason, promise)
-})
+process.on('unhandRejection', (reason, promise) => {
+  console.log(`❗ | [Erro]\n\n` + reason, promise);
+});
 process.on('uncaughtException', (error, origin) => {
-  console.log('Error ' + error, origin)
-})
+  console.log(`❗ | [Erro]\n\n` + error, origin);
+});
 process.on('uncaughtExceptionMonitor', (error, origin) => {
-  console.log('Error ' + error, origin)
-})
+  console.log(`❗ | [Erro]\n\n` + error, origin);
+});

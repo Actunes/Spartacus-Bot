@@ -1,4 +1,5 @@
 const fs = require("fs")
+const chalk = require('chalk')
 
 module.exports = async (client) => {
 
@@ -22,4 +23,5 @@ module.exports = async (client) => {
   client.on("ready", async () => {
     client.guilds.cache.forEach(guild => guild.commands.set(SlashsArray))
   })
+  console.log(chalk.cyan(`[Comandos] | Comandos carregados.`))
 }
