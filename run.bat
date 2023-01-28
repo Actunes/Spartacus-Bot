@@ -1,6 +1,8 @@
 @echo off
-echo Iniciando o bot...
+echo ----------------------------------
+echo         Iniciando o bot...
+echo ----------------------------------
 :main
 npm run server
-echo Reiniciando o bot pois deu merda..
+echo Reiniciando o bot
 goto main
