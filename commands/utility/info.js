@@ -1,7 +1,8 @@
 const Discord = require('discord.js')
 const package = require("../../package.json");
 const { cpu, mem, os } = require("node-os-utils");
-const uptimeBot = require ("pretty-ms")
+const uptimeBot = require("pretty-ms")
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, Events } = require('discord.js')
 
 module.exports = {
   name: 'info',
@@ -14,7 +15,16 @@ module.exports = {
     const cpuUsage = (await cpu.usage()) + "%"
     const memoryUsage = (await mem.info()).usedMemMb;
     const memoryTotal = (await mem.info()).totalMemMb;
-    
+
+    const row = new ActionRowBuilder()
+      .addComponents(
+        new ButtonBuilder()
+          .setCustomId('primary')
+          .setLabel('Info Server')
+          .setStyle(ButtonStyle.Primary)
+          .setEmoji('<:MH_Info_Pink:1060401054379945994>'),
+      )
+
     let embedInfo = new Discord.EmbedBuilder()
       .setColor('#700000')
       .setTitle('About Spartacus Bot')
@@ -26,8 +36,8 @@ module.exports = {
         { name: `**OS**`, value: '```' + operatingSystem + '```', inline: true },
         { name: `**NODE.JS**`, value: '```' + `${process.version.slice(1).split(".").join(".")}` + '```', inline: true },
         { name: `**DISCORD.JS**`, value: '```' + `${package.dependencies["discord.js"].slice(1)}` + '```', inline: true },
-        { name: `**UPTIME**`, value: '```' + `${uptimeBot(client.uptime, {verbose: true})}` + '```', inline: true }
+        { name: `**UPTIME**`, value: '```' + `${uptimeBot(client.uptime, { verbose: true })}` + '```', inline: true }
       )
-    interaction.reply({ embeds: [embedInfo], ephemeral: true })
+    interaction.reply({ embeds: [embedInfo], ephemeral: true, components: [row] })
   }
 }
