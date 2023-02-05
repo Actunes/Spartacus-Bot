@@ -64,27 +64,27 @@ module.exports = {
             `** :calendar_spiral: Created at** <t:${parseInt(interaction.guild.createdTimestamp / 1000)}:R>`,
             `** :identification_card: ID** ${interaction.guild.id}`,
             `** :crown: Owner** <@${interaction.guild.ownerId}>`,
-            `**:earth_americas: Language** ${new Intl.DisplayNames(["pt-BR"], { type: "language" }).of(interaction.guild.preferredLocale)}`
+            `** :earth_americas: Language** ${new Intl.DisplayNames(["pt-BR"], { type: "language" }).of(interaction.guild.preferredLocale)}`
           ].join('\n')
         },
         {
-          name: `Channels, threads and categories (${interaction.guild.channels.cache.size})`, value: [
-            `**Categories** ${interaction.guild.channels.cache.filter(c => c.type === Discord.ChannelType.GuildCategory).size}`,
-            `**Text channels** ${interaction.guild.channels.cache.filter(c => c.type === Discord.ChannelType.GuildText).size}`,
-            `**Voice channels** ${interaction.guild.channels.cache.filter(c => c.type === Discord.ChannelType.GuildVoice).size}`,
+          name: `Channels and categories (${interaction.guild.channels.cache.size})`, value: [
+            `** :newspaper: Categories** ${interaction.guild.channels.cache.filter(c => c.type === Discord.ChannelType.GuildCategory).size}`,
+            `** :thought_balloon: Text channels** ${interaction.guild.channels.cache.filter(c => c.type === Discord.ChannelType.GuildText).size}`,
+            `** :microphone2: Voice channels** ${interaction.guild.channels.cache.filter(c => c.type === Discord.ChannelType.GuildVoice).size}`,
           ].join('\n'), inline: true
         },
         {
           name: `Emojis and Stickers (${interaction.guild.emojis.cache.size + interaction.guild.stickers.cache.size})`, value: [
-            `**Animated** ${interaction.guild.emojis.cache.filter(emoji => emoji.animated).size}`,
-            `**Static** ${interaction.guild.emojis.cache.filter(emoji => !emoji.animated).size}`,
-            `**Sticker** ${interaction.guild.stickers.cache.size}`
+            `** :tv: Animated** ${interaction.guild.emojis.cache.filter(emoji => emoji.animated).size}`,
+            `** :moyai: Static** ${interaction.guild.emojis.cache.filter(emoji => !emoji.animated).size}`,
+            `** :label: Sticker** ${interaction.guild.stickers.cache.size}`
           ].join('\n'), inline: true
         },
         {
           name: `Members (${interaction.guild.memberCount})`, value: [
-            `**Users** ${interaction.guild.memberCount - botCount}`,
-            `**Bots** ${botCount}`
+            `** :bust_in_silhouette: Users** ${interaction.guild.memberCount - botCount}`,
+            `** :robot: Bots** ${botCount}`
           ].join('\n'), inline: true
         }
 
