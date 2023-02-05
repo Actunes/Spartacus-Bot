@@ -44,7 +44,7 @@ module.exports = {
         { name: `** <:computer:1071758313466888202> OS**`, value: '```' + operatingSystem + '```', inline: true },
         { name: `** <:node:1071758308937060407> NODE.JS**`, value: '```' + `${process.version.slice(1).split(".").join(".")}` + '```', inline: true },
         { name: `** <:discordicon:1071758318332289176> DISCORD.JS**`, value: '```' + `${package.dependencies["discord.js"].slice(1)}` + '```', inline: true },
-        { name: `**UPTIME**`, value: '```' + `${uptimeBot(client.uptime, { verbose: true })}` + '```', inline: true }
+        { name: `** <:uptimeicon:1071773570654552084> UPTIME**`, value: '```' + `${uptimeBot(client.uptime, { verbose: true })}` + '```', inline: true }
       )
     await interaction.reply({ embeds: [embedInfo], ephemeral: true, components: [row] })
 
