@@ -23,7 +23,7 @@ module.exports = {
           .setCustomId('primary')
           .setLabel('Server Info')
           .setStyle(ButtonStyle.Primary)
-          .setEmoji('<:MH_Info_Pink:1060401054379945994>'),
+          .setEmoji('<:serversvgrepocom:1071432736411238441>'),
       )
       .addComponents(
         new ButtonBuilder()
@@ -38,12 +38,12 @@ module.exports = {
       .setTitle('About Spartacus Bot')
       .setDescription('Spartacus bot was created and thought about the needs that the spartacus group needs for its development.\n\nTo start using the bot you can type `/` and select from the available commands.\n\n<:system77:1060391259153375332> System Monitor')
       .addFields(
-        { name: `**RAM**`, value: '```' + Math.trunc(memoryUsage) + ' MB' + ' | ' + Math.trunc(memoryTotal) + ' MB ' + `(${memoryPorcentage})` + '```', inline: true },
-        { name: `**CPU_USAGE**`, value: '```' + `${cpuUsage}` + '```', inline: true },
-        { name: `**PING**`, value: '```' + `${Math.round(client.ws.ping)}ms` + '```', inline: true },
-        { name: `**OS**`, value: '```' + operatingSystem + '```', inline: true },
-        { name: `**NODE.JS**`, value: '```' + `${process.version.slice(1).split(".").join(".")}` + '```', inline: true },
-        { name: `**DISCORD.JS**`, value: '```' + `${package.dependencies["discord.js"].slice(1)}` + '```', inline: true },
+        { name: `<:ramuse:1071758310660898876> **RAM**`, value: '```' + Math.trunc(memoryUsage) + ' MB' + ' | ' + Math.trunc(memoryTotal) + ' MB ' + `(${memoryPorcentage})` + '```', inline: true },
+        { name: `** <:cpus:1071758315471769610> CPU_USAGE**`, value: '```' + `${cpuUsage}` + '```', inline: true },
+        { name: `** <:onlinesvgrepocom:1071760303156641823> PING**`, value: '```' + `${Math.round(client.ws.ping)}ms` + '```', inline: true },
+        { name: `** <:computer:1071758313466888202> OS**`, value: '```' + operatingSystem + '```', inline: true },
+        { name: `** <:node:1071758308937060407> NODE.JS**`, value: '```' + `${process.version.slice(1).split(".").join(".")}` + '```', inline: true },
+        { name: `** <:discordicon:1071758318332289176> DISCORD.JS**`, value: '```' + `${package.dependencies["discord.js"].slice(1)}` + '```', inline: true },
         { name: `**UPTIME**`, value: '```' + `${uptimeBot(client.uptime, { verbose: true })}` + '```', inline: true }
       )
     await interaction.reply({ embeds: [embedInfo], ephemeral: true, components: [row] })
