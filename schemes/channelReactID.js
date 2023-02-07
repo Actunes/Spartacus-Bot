@@ -1,8 +1,8 @@
 const mongoose = require("mongoose")
 
-const scheme = new mongoose.scheme({
-    _channelReactID: { type: String, required: true },
-    status: { type: Boolean, defaunt: false }
+const scheme = new mongoose.Schema({
+    _id: { type: String, required: true },
+    idChannel: { type: Array, default: false }
 })
 
 module.exports = mongoose.model("channelReactID", scheme)
