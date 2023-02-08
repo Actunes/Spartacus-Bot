@@ -4,7 +4,7 @@ const schemaData = require('../../schemes/channelReactID')
 
 module.exports = {
     name: 'setchannel',
-    description: 'set channel to auto-react',
+    description: 'Set channel to auto-react',
     type: Discord.ApplicationCommandType.ChatInput,
     options: [
         {
@@ -15,12 +15,17 @@ module.exports = {
         }
     ],
     run: async (client, interaction) => {
-        const channelId = interaction.options.getChannel('channel')
+        if (!interaction.member.permissions.has(Discord.PermissionFlagsBits.Administrator)) {
+            interaction.reply({ content: '```You do not have permission to use this command ❌```', ephemeral: true })
+        } else {
+            const channelId = interaction.options.getChannel('channel')
 
-        const dataMongo = await schemaData.findOne({_id: 'channelToReact'})
+            const dataMongo = await schemaData.findOne({ _id: 'channelToReact' })
 
-        await schemaData.findOneAndUpdate({ _id: 'channelToReact' }, {$addToSet: {'idChannel': channelId.id}}, {upsert: true} )
+            await schemaData.findOneAndUpdate({ _id: 'channelToReact' }, { $addToSet: { 'idChannel': channelId.id } }, { upsert: true })
 
-        interaction.reply({ content: `${channelId.id}`, ephemeral: false })
+            interaction.reply({ content: `Channel ${channelId} added auto-react successfully <:check:1072492827285667910>`, ephemeral: false })
+
+        }
     }
 }
