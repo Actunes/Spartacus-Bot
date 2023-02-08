@@ -13,6 +13,7 @@ require("dotenv").config()
 
 // MongoDB
 const mongoose = require("mongoose")
+const { ActivityType } = require("discord.js")
 mongoose.set("strictQuery", true)
 mongoose.connect(process.env.MONGO)
   .then(() => console.log(chalk.magentaBright(`[MongoDB] | Banco de dados conectado!`)))
@@ -38,6 +39,10 @@ client.on('interactionCreate', (interaction) => {
 //Log bot online
 client.on("ready", () => {
   console.log(chalk.cyan(`[Bot] | online em ` + chalk.red(`${client.user.username}!`)))
+  client.user.setActivity({
+    name: `/info`,
+    type: ActivityType.Playing
+  })
 })
 
 //
