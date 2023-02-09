@@ -1,9 +1,11 @@
+const { PermissionFlagsBits } = require('discord.js')
 const Discord = require('discord.js')
 
 module.exports = {
     name: 'clear',
     description: 'clear chat messages',
     type: Discord.ApplicationCommandType.ChatInput,
+    default_member_permissions: PermissionFlagsBits.Administrator,
     options: [
         {
             name: 'amount',

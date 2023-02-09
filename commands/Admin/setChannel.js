@@ -1,3 +1,4 @@
+const { PermissionFlagsBits } = require('discord.js')
 const Discord = require('discord.js')
 const { Schema } = require('mongoose')
 const schemaData = require('../../schemes/channelReactID')
@@ -6,6 +7,7 @@ module.exports = {
     name: 'setchannel',
     description: 'Set channel to auto-react',
     type: Discord.ApplicationCommandType.ChatInput,
+    default_member_permissions: PermissionFlagsBits.Administrator,
     options: [
         {
             name: 'channel',
