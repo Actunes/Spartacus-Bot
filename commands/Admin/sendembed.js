@@ -16,56 +16,16 @@ module.exports = {
     ],
     run: async (client, interaction) => {
         const raw = interaction.options.getString('raw_json')
-        // Gambiarra '-'
-        try {
-            var obj = JSON.parse(raw)
-            var obj2 = obj.embeds
-            objLength = obj2.length
-            message_raw = 'Embed submitted using raw_json'
-            if (objLength == 1) {
-                await interaction.channel.send({ embeds: [obj2[0]] }).then(() => {
-                    interaction.reply({ content: `${message_raw}` })
-                })
-            } else if (objLength == 2) {
-                await interaction.channel.send({ embeds: [obj2[0], obj2[1]] }).then(() => {
-                    interaction.reply({ content: `${message_raw}` })
-                })
-            } else if (objLength == 3) {
-                await interaction.channel.send({ embeds: [obj2[0], obj2[1], obj2[2]] }).then(() => {
-                    interaction.reply({ content: `${message_raw}` })
-                })
-            } else if (objLength == 4) {
-                await interaction.channel.send({ embeds: [obj2[0], obj2[1], obj2[2], obj2[3]] }).then(() => {
-                    interaction.reply({ content: `${message_raw}` })
-                })
-            } else if (objLength == 5) {
-                await interaction.channel.send({ embeds: [obj2[0], obj2[1], obj2[2], obj2[3], obj2[4]] }).then(() => {
-                    interaction.reply({ content: `${message_raw}` })
-                })
-            } else if (objLength == 6) {
-                await interaction.channel.send({ embeds: [obj2[0], obj2[1], obj2[2], obj2[3], obj2[4], obj2[5]] }).then(() => {
-                    interaction.reply({ content: `${message_raw}` })
-                })
-            } else if (objLength == 7) {
-                await interaction.channel.send({ embeds: [obj2[0], obj2[1], obj2[2], obj2[3], obj2[4], obj2[5], obj2[6]] }).then(() => {
-                    interaction.reply({ content: `${message_raw}` })
-                })
-            } else if (objLength == 8) {
-                await interaction.channel.send({ embeds: [obj2[0], obj2[1], obj2[2], obj2[3], obj2[4], obj2[5], obj2[6], obj2[7]] }).then(() => {
-                    interaction.reply({ content: `${message_raw}` })
-                })
-            } else if (objLength == 9) {
-                await interaction.channel.send({ embeds: [obj2[0], obj2[1], obj2[2], obj2[3], obj2[4], obj2[5], obj2[6], obj2[7], obj2[8]] }).then(() => {
-                    interaction.reply({ content: `${message_raw}` })
-                })
-            } else if (objLength == 10) {
-                await interaction.channel.send({ embeds: [obj2[0], obj2[1], obj2[2], obj2[3], obj2[4], obj2[5], obj2[6], obj2[7], obj2[8], obj2[9]] }).then(() => {
-                    interaction.reply({ content: `${message_raw}` })
-                })
-            }
-        } catch (error) {
-            await interaction.reply({ content: 'raw_json invalid', ephemeral: true})
-        }
 
+        try {
+            const jsonObject = JSON.parse(raw)
+            const jsonEmbeds = jsonObject.embeds
+            
+            await interaction.channel.send({ embeds: jsonEmbeds.slice(0, jsonEmbeds.length) }).then(() => {
+                interaction.reply({ content: 'Embed submitted using raw_json', ephemeral: true})
+            })
+        } catch (error) {
+            await interaction.reply({ content: 'raw_json is invalid JSON' + `\n\n**[Error]**` + '```' + error.message + '```', ephemeral: true })
+        }
     }
 }

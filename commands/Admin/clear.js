@@ -16,24 +16,29 @@ module.exports = {
     ],
     run: async (client, interaction) => {
 
-        let number = interaction.options.getNumber('amount')
-        if (!interaction.member.permissions.has(Discord.PermissionFlagsBits.Administrator)) {
-            interaction.reply({ content: '```You do not have permission to use this command ❌```', ephemeral: true })
-        } else {
-            if (parseInt(number) >= 1 && parseInt(number) <= 100) {
-                interaction.channel.bulkDelete(parseInt(number))
-                let embed = new Discord.EmbedBuilder()
-                    .setColor([112, 0, 0])
-                    .setDescription(`${number} deleted messages in ${interaction.channel}`)
-                interaction.reply({ embeds: [embed], ephemeral: true })
-            } else {
-                if (parseInt(number) < 1) {
-                    await interaction.reply({ content: '```Enter a number greater than 1 🛠```', ephemeral: true })
-                }
-                else {
-                    await interaction.reply({ content: '```Enter a number below or equal than 100 🛠```', ephemeral: true })
-                }
+        const number = interaction.options.getNumber('amount')
+
+        try {
+            if (number < 1 || number > 100) {
+                return interaction.reply({
+                    content: `[Error]` + '```' + `Enter a number between 1 and 100 🛠` + '```',
+                    ephemeral: true,
+                })
             }
+            const deletedMessages = await interaction.channel.bulkDelete(number)
+
+            const embed = new Discord.EmbedBuilder()
+                .setColor([112, 0, 0])
+                .setDescription(`${deletedMessages.size} deleted messages in ${interaction.channel}`)
+            return interaction.reply({
+                embeds: [embed],
+                ephemeral: true,
+            })
+        } catch (error) {
+            await interaction.reply({
+                content: `[Error]` + '```' + error.message + '```',
+                ephemeral: true,
+            })
         }
     }
 }
