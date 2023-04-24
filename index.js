@@ -41,7 +41,7 @@ client.on("ready", () => {
   console.log(chalk.cyan(`[Bot] | online em ` + chalk.red(`${client.user.username}!`)))
   client.user.setActivity({
     name: `/info`,
-    type: ActivityType.Playing
+    type: ActivityType.Listening
   })
 })
 
