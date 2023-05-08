@@ -22,4 +22,11 @@ client.once("ready", () => {
         msg.react(`✅`)
     })
     scheduledMessage2.start()
+    const scheduledMessage3 = new cron.CronJob('0 0 3 1 1,3,5,7,9,11 *', async () => {
+        const guild = client.guilds.cache.get(guildID)
+        const channel = guild.channels.cache.get(channelID)
+        const msg = await channel.send({ content: `---------------- <@1020202500046987297> --------------------\n\nEstão abertas as eleições para a <@1020228099419406366> para todos os membros que NÃO ESTEJAM em período probatório. Tudo será explicado e ensinado para aqueles que não tiverem noção de como funciona, portanto, não hesite em se candidatar.\n\nCaso tenha interesse, reaja ao emote abaixo:`})
+        msg.react(`<:spts:863119583275384864>`)
+    })
+    scheduledMessage3.start()
 })
