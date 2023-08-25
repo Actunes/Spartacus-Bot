@@ -8,6 +8,7 @@ client.once("ready", () => {
     const channelIDSec = '638465939977011230'
     const monthNames = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
     const month = monthNames[date.getMonth()]
+    console.log(month)
 
     const scheduledMessage1 = new cron.CronJob('0 0 3 25 * *', async () => {
         const guild = client.guilds.cache.get(guildID)
