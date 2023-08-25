@@ -6,14 +6,15 @@ client.once("ready", () => {
     const guildID = '407878248480112642'
     const channelID = '1055539833407295579'
     const channelIDSec = '638465939977011230'
-    const monthNames = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
-    const month = monthNames[date.getMonth()]
 
     const scheduledMessage1 = new cron.CronJob('0 0 3 25 * *', async () => {
         const guild = client.guilds.cache.get(guildID)
         const channel = guild.channels.cache.get(channelID)
+        const monthNames = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
+        const month = monthNames[date.getMonth()]
         const msg = await channel.send({ content: `📢 Esta é a Chamada Obrigatória do mês de **${month}**. Todos os <@&1020194745722609684> tem 7 dias para confirmar na reação abaixo que estão ativos. Caso contrário, podem receber 2 pontos de infração.\n\n⚠️ Atenção a quem está em <@&1020234436236816394>, teremos uma chamada **especifica** para vocês.` })
         msg.react(`<:spts:863119583275384864>`)
+        month = null
     })
     scheduledMessage1.start()
     const scheduledMessage2 = new cron.CronJob('0 0 3 27 * *', async () => {
