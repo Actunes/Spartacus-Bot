@@ -3,7 +3,6 @@ const package = require("../../package.json");
 const { cpu, mem, os } = require("node-os-utils");
 const uptimeBot = require("pretty-ms")
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, ChannelType } = require('discord.js')
-const date = new Date()
 
 module.exports = {
   name: 'info',
@@ -12,11 +11,6 @@ module.exports = {
 
   run: async (client, interaction) => {
 
-    
-    const monthNames = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
-    const month = monthNames[date.getMonth()]
-    console.log(month)
-    
     const operatingSystem = `${os.type()} ${await os.oos().then(o => o)} ${os.arch()}`
     const cpuUsage = (await cpu.usage()).toFixed(2) + "%"
     const memoryUsage = (await mem.info()).usedMemMb;
